@@ -5,7 +5,7 @@
 #ifndef BIN_EVO_PROJEKT_EVOLUTION_H
 #define BIN_EVO_PROJEKT_EVOLUTION_H
 
-
+#include "params.h"
 #include "Chromosome.h"
 
 class Evolution {
@@ -16,7 +16,6 @@ public:
     void evolve();
     bool isEnd();
     Chromosome mutate(Chromosome item, int percent);
-
     void exportChromosome();
 
 private:
@@ -26,18 +25,14 @@ private:
     Chromosome parent1;
     Chromosome parent2;
 
-    int mutationProbability = 4;
-    int mutatedGenes = 4;
-    int crossoverProbability = 70;
-    int tournamentSize = 4; //Min 2
-    int populationSize = 20; //Musi byt parne
-    int maxGenerations = 20;
+    int mutationProbability = MUTATIONPROB;
+    int mutatedGenes = MUTATEDGENES;
+    int crossoverProbability = CROSSOVERPROBABILITY;
+    int tournamentSize = TOURNAMENTSIZE; //Min 2
+    int populationSize = POPSIZE; //Musi byt parne
+    int maxGenerations = MAXGENERATIONS;
     int currentGeneration = 0;
-    int chromosomeLength = 10;
-
-
     void createNewPopulation();
-
     void crossover();
 
 };

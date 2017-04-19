@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "Evolution.h"
-#include "Chromosome.h"
 
 using namespace std;
 
@@ -13,16 +12,15 @@ Evolution::Evolution() {
 }
 
 void Evolution::initialize() {
+    cout << "MAX RULES = " << MAXRULES;
+    cout << endl;
     population.resize(populationSize);
     nextPopulation.resize(populationSize);
 
     for (int i = 0; i < populationSize; ++i) {
-        cout << "i = " << i << endl;
-        population[i].initializeRandomRules();
-        population[i].initializeCa();
+        population[i].initialize();
         population[i].fittness = 0;
-        nextPopulation[i].initializeRandomRules();
-        nextPopulation[i].initializeCa();
+        nextPopulation[i].initialize();
         nextPopulation[i].fittness = 0;
     }
 
@@ -31,15 +29,10 @@ void Evolution::initialize() {
 
 void Evolution::evolve() {
     while(!isEnd()){
-        cout << "Generacia #"<< currentGeneration << endl;
-        // ohodnoceni populace
         evaluatePopulation();
-//        // elitizmus
         nextPopulation[0] = bestEver;
         nextPopulation[1] = mutate(bestEver, 100);
         createNewPopulation();
-//        //vymena generacii
-        cout << "Best fittnes = " << bestEver.fittness << endl;
 
         swap(population,nextPopulation);
         currentGeneration++;
@@ -60,6 +53,11 @@ void Evolution::evaluatePopulation() {
         population[i].calculateFittness();
         if(population[i].getFittness() > 0 && population[i].getFittness() >= bestEver.getFittness()){
             //TODO: MOZNO TREBA SKOPIROVAT NEJAKO
+            if(population[i].getFittness() > bestEver.getFittness()){
+                cout << "Generacia #"<< currentGeneration << endl;
+                cout << "Best fittnes = " << bestEver.fittness << endl;
+            }
+
             bestEver = Chromosome(population[i]);
         }
     }
@@ -102,48 +100,16 @@ void Evolution::createNewPopulation() {
 }
 
 void Evolution::crossover() {
-    vector<int> key1, key2;
-    std::map<vector<int>,int>::iterator it;
-    int lastIndexOfKeyNotInOldParent1 = -1;
-
     if (Chromosome::urandom(0, 101) < crossoverProbability){
         Chromosome oldParent1 = parent1;
         Chromosome oldParent2 = parent2;
 
-        int crossoverCount = Chromosome::urandom(0, parent1.maxRules);
-        for (int i = 0; i < crossoverCount; ++i) {
-            key1 = oldParent1.rulesKeys[i];
-            it = oldParent2.rulesMap.find(key1);
-            if(it != oldParent2.rulesMap.end()){
-                parent1.rulesMap[key1] = oldParent2.rulesMap[key1];
-                parent2.rulesMap[key1] = oldParent1.rulesMap[key1];
-            }
-            else {
-                //key1 not in oldParent2
-                //find key2 which is not present in newParent1 ?
-                for (int j = lastIndexOfKeyNotInOldParent1+1; j < oldParent2.rulesKeys.size(); ++j) {
-                    lastIndexOfKeyNotInOldParent1 = -1;
-                    key2 = oldParent2.rulesKeys[j];
-                    it = oldParent1.rulesMap.find(key2);
-                    if(it == oldParent1.rulesMap.end()){
-                        lastIndexOfKeyNotInOldParent1 = j;
-                        break;
-                    }
-                }
-                if(lastIndexOfKeyNotInOldParent1 != -1){
-                    parent1.rulesMap.erase(key1);
-                    parent1.rulesMap[key2] = oldParent2.rulesMap[key2];
-                    parent1.rulesKeys[i] = key2;
-
-                    parent2.rulesMap.erase(key2);
-                    parent2.rulesMap[key1] = oldParent1.rulesMap[key1];
-                    parent2.rulesKeys[lastIndexOfKeyNotInOldParent1] = key1;
-                }
-
-            }
-
-
+        int crossoverPoint = Chromosome::urandom(0, parent1.ca.rulesVector.size());
+        for (int i = crossoverPoint; i < parent1.ca.rulesVector.size(); ++i) {
+            parent1.ca.rulesVector[i] = oldParent2.ca.rulesVector[i];
+            parent2.ca.rulesVector[i] = oldParent1.ca.rulesVector[i];
         }
+
         parent1.evaluate = true;
         parent2.evaluate = true;
     }
