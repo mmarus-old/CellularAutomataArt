@@ -1,0 +1,3 @@
+/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir

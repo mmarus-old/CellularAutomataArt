@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="BIN_EVO_projekt"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BIN_EVO_projekt">
+				<Option output="/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/BIN_EVO_projekt" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 BIN_EVO_projekt"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BIN_EVO_projekt/fast">
+				<Option output="/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/BIN_EVO_projekt" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 BIN_EVO_projekt/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/archie/Devel/BIN-EVO-projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/CellularAutomata.cpp">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/CellularAutomata.h">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/Chromosome.cpp">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/Chromosome.h">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/Evolution.cpp">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/Evolution.h">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/NumberGenerator.cpp">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/NumberGenerator.h">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/main.cpp">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
