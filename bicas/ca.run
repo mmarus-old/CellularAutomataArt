@@ -1,1 +1,7 @@
-./BiCAS.py 31 ca.tab ca.cas
+#velkost pola
+#$1
+#$2 dlzka simulacie
+#$3 nepouzivaj ca.cas
+
+sed -i "s/maxSteps =.*/maxSteps = $2/" BiCAS.py 
+./BiCAS.py $1 ca.tab $3 

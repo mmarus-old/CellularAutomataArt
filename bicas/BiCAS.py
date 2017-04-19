@@ -43,8 +43,7 @@ brown = pygame.Color(0x825A2C00)
 orange = pygame.Color(0xFA680000)
 violet = pygame.Color(0xAA00FF00)
 
-color = [ black, red, green, yellow, brown, white, orange, cyan, violet,
-          gray, magenta, pink, blue ]
+color = [ black, cyan, yellow, magenta, pink, brown, orange, blue, violet, red, green, white, gray ]
 
 class CA:
     def __init__(self, rows=20, cols=20, states=2, nsize=5):
@@ -129,9 +128,9 @@ class CA:
                 pygame.draw.rect(win, color[self.get_cell(row, col)],
                                 ((col-1)*self.cell_w, (row-1)*self.cell_h,
                                 self.cell_w, self.cell_h), 0)
-                pygame.draw.rect(win, blue,
-                                ((col-1)*self.cell_w, (row-1)*self.cell_h,
-                                self.cell_w, self.cell_h), 1)
+                #pygame.draw.rect(win, blue,
+                #                ((col-1)*self.cell_w, (row-1)*self.cell_h,
+                #                self.cell_w, self.cell_h), 1)
         pygame.display.update()
         # po startu aplikace zobraz napovedu
         if self.shelp == 1:
@@ -280,7 +279,7 @@ class CA:
 
 def main_loop(ca, win):
     countOfSteps = 0
-    maxSteps = 30
+    maxSteps = 100
     devel = 0
     capture = 0
     while True: # obsluha GUI a rizeni vyvoje CA
