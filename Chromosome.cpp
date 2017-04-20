@@ -42,14 +42,18 @@ void Chromosome::calculateFittness() {
 
     for (int i = 0; i < ca.heigth; ++i) {
         for (int j = 0; j < ca.width; ++j) {
-            if(ca.currentMap[i][j] != 0)
-                fittness += 2;
+            if(ca.currentMap[i][j] !=0)
+                fittness++;
+
+            if((ca.oldStates.size() >= SIMULATIONSTEPS-1)
+               && (ca.oldStates[ca.oldStates.size()-1][i][j] != ca.oldStates[ca.oldStates.size()-2][i][j] &&
+                ca.oldStates[ca.oldStates.size()-1][i][j] != ca.oldStates[ca.oldStates.size()-3][i][j]))
+                fittness++;
 
         }
     }
-
-    fittness += ca.totalyNewStatsOfCells;
-    fittness += ca.stepsWithChangedStates*2;
+//    cout << "fit " << fittness << endl;
+    fittness += ca.stepsWithChangedStates;
     fittness += ca.changedStates;
     evaluate = false;
 }

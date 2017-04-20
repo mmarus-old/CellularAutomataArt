@@ -4,4 +4,4 @@
 #$3 nepouzivaj ca.cas
 
 sed -i "s/maxSteps =.*/maxSteps = $2/" BiCAS.py 
-./BiCAS.py $1 ca.tab $3 
+./BiCAS.py $1 $3 $4

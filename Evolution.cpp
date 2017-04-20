@@ -37,6 +37,8 @@ void Evolution::evolve() {
         swap(population,nextPopulation);
         currentGeneration++;
     }
+    cout << "Generacia #"<< currentGeneration << endl;
+    cout << "Best fittnes = " << bestEver.fittness << endl;
 }
 
 bool Evolution::isEnd() {

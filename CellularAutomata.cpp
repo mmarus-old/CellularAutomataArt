@@ -20,7 +20,7 @@ void CellularAutomata::initializeCA() {
     rulesVector.resize(maxValueFromFunction);
     currentMap.resize(heigth, vector<int>(width));
     newMap.resize(heigth, vector<int>(width));
-    oldStates.resize(SIMULATIONSTEPS, newMap);
+    oldStates.clear();
 }
 
 int CellularAutomata::updateFunction() {
@@ -134,6 +134,8 @@ void CellularAutomata::develop() {
                 isCrossedOver = true;
                 return;
             }
+
+
         }
     }
     oldStates.push_back(currentMap);
