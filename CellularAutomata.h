@@ -43,7 +43,7 @@ public:
     int changedStates;
     int stepsWithChangedStates;
     bool isCrossedOver;
-    int totalyNewStatsOfCells;
+    vector<vector< vector <int> >>mapWithVisitedStates;
 
 private:
     vector< vector <int> > newMap;

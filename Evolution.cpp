@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "Evolution.h"
-#include <omp.h>
 
 using namespace std;
 
@@ -36,6 +35,8 @@ void Evolution::evolve() {
     createNewPopulation();
 
     swap(population, nextPopulation);
+
+    cerr << "Generation: " << currentGeneration << " max fitness = " << bestEver.fittness << endl;
     currentGeneration++;
   }
   cout << bestEver.fittness << ";";
@@ -50,11 +51,9 @@ bool Evolution::isEnd() {
 }
 
 void Evolution::evaluatePopulation() {
-//#pragma omp parallel for
   for (int i = 0; i < populationSize; ++i) {
     population[i].calculateFittness();
   }
-
 
   for(int i = 0; i < populationSize; i++) {
     if (population[i].getFittness() > 0 && population[i].getFittness() >= bestEver.getFittness()) {

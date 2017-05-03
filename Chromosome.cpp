@@ -6,6 +6,7 @@
 #include "Chromosome.h"
 #include <cmath>
 #include <algorithm>
+#include <omp.h>
 
 
 using namespace std;
@@ -39,18 +40,18 @@ void Chromosome::calculateFittness() {
         fittness = 0;
         return;
     }
-
+  for (int state = 0; state < STATES; state++) {
     for (int i = 0; i < ca.heigth; ++i) {
-        for (int j = 0; j < ca.width; ++j) {
-            if(ca.currentMap[i][j] != 0)
-                fittness += 2;
-
-        }
+      int usedStates = 0;
+      for (int j = 0; j < ca.width; ++j) {
+        usedStates += ca.mapWithVisitedStates[state][i][j] ;
+      }
+      fittness += usedStates*usedStates;
     }
+  }
 
-    fittness += ca.totalyNewStatsOfCells;
-    fittness += ca.stepsWithChangedStates*2;
-    fittness += ca.changedStates;
+//    fittness += ca.stepsWithChangedStates*2;
+//    fittness += ca.changedStates;
     evaluate = false;
 }
 

@@ -43,6 +43,8 @@ cmath
 -
 algorithm
 -
+omp.h
+-
 
 /home/archie/Devel/BIN-EVO-projekt/Chromosome.h
 map
@@ -59,8 +61,6 @@ iostream
 -
 Evolution.h
 /home/archie/Devel/BIN-EVO-projekt/Evolution.h
-omp.h
--
 
 /home/archie/Devel/BIN-EVO-projekt/Evolution.h
 params.h
