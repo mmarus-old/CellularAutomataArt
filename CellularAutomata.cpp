@@ -17,7 +17,6 @@ CellularAutomata::CellularAutomata() {
 void CellularAutomata::initializeCA() {
   changedStates = 0;
   isCrossedOver = false;
-  rulesVector.resize(maxValueFromFunction);
   currentMap.resize(heigth, vector<int>(width, 0));
   newMap.resize(heigth, vector<int>(width, 0));
   oldStates.resize(SIMULATIONSTEPS, newMap);
@@ -61,13 +60,12 @@ void CellularAutomata::runSimulation() {
 }
 
 void CellularAutomata::develop() {
+  vector<int> cellNeighbours;
+
   for (int i = 1; i < heigth - 1; ++i) {
     for (int j = 1; j < width - 1; ++j) {
-      valueOfcenterOfNeigh = currentMap[i][j];
-      rowOfCenterOfNeigh = i;
-      colOfCenterOfNeigh = j;
-
-      int newValue = updateFunction();
+      cellNeighbours = getNeighbourhood(i,j);
+      int newValue = updateFunction(cellNeighbours);
       newMap[i][j] = newValue;
       mapWithVisitedStates[newValue][i][j] = 1;
 
@@ -81,74 +79,103 @@ void CellularAutomata::develop() {
   swapMaps();
 }
 
-void CellularAutomata::swapMaps() {
-  currentMap.swap(newMap);
-}
+vector<int> CellularAutomata::getNeighbourhood(int row, int col) {
+  if (neighbourhoodSize != 5 && neighbourhoodSize != 9)
+    throw std::runtime_error("Bad neighbourhood");
+  vector<int> neighbourhood;
 
 
-int CellularAutomata::updateFunction() {
-  int result = 0;
-  int index = mathFunction();
+  int i = 0;
+  int j = 0;
 
-  if (index < rulesVector.size()) {
-    result = rulesVector[index];
-    if (result != valueOfcenterOfNeigh)
-      changedStates++;
-  } else {
-    result = valueOfcenterOfNeigh;
+  if(neighbourhoodSize == 5) {
+    i = mod(row-1,21); j = col; //N
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = row; j = mod(col-1,21); //W
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = row; j = col; //C
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = row; j = mod(col+1,21); //E
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = mod(row+1,21); j = col; //South
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+  } else if(neighbourhoodSize == 9) {
+    i = mod(row-1,21); j = mod(col-1,21); //NW
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = mod(row-1,21); j = col; //N
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = mod(row-1,21); j = mod(col+1,21); //NE
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = row; j = mod(col-1,21); //W
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = row; j = col; //C
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = row; j = mod(col+1,21); //E
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = mod(row+1,21); j = mod(col-1,21); //SW
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = mod(row+1,21); j = col; //South
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
+
+    i = mod(row+1,21); j = mod(col+1,21); //South E
+    neighbourhood.push_back(currentMap[i][j]);
+    //cerr << "row:" << i << " col:" << j << " = " << currentMap[i][j] << endl;
   }
 
-  return result;
+  return neighbourhood;
 }
 
-int CellularAutomata::mathFunction() {
-  int result = 0;
-
-  if (neighbourhoodSize == 5) {
-    result += currentMap[rowOfCenterOfNeigh - 1][colOfCenterOfNeigh];
-    result += currentMap[rowOfCenterOfNeigh][colOfCenterOfNeigh - 1];
-    result += currentMap[rowOfCenterOfNeigh][colOfCenterOfNeigh];
-    result += currentMap[rowOfCenterOfNeigh + 1][colOfCenterOfNeigh];
-    result += currentMap[rowOfCenterOfNeigh][colOfCenterOfNeigh + 1];
-  } else if (neighbourhoodSize == 9) {
-    result += currentMap[rowOfCenterOfNeigh - 1][colOfCenterOfNeigh - 1];
-    result += currentMap[rowOfCenterOfNeigh - 1][colOfCenterOfNeigh];
-    result += currentMap[rowOfCenterOfNeigh - 1][colOfCenterOfNeigh + 1];
-    result += currentMap[rowOfCenterOfNeigh][colOfCenterOfNeigh - 1];
-    result += currentMap[rowOfCenterOfNeigh][colOfCenterOfNeigh];
-    result += currentMap[rowOfCenterOfNeigh][colOfCenterOfNeigh + 1];
-    result += currentMap[rowOfCenterOfNeigh + 1][colOfCenterOfNeigh - 1];
-    result += currentMap[rowOfCenterOfNeigh + 1][colOfCenterOfNeigh];
-    result += currentMap[rowOfCenterOfNeigh + 1][colOfCenterOfNeigh + 1];
-  }
-
-
-  return result;
-}
-
-int CellularAutomata::mathFunction(const vector<int> &cellNeighbours) {
-  int result = 0;
-  for (int i = 0; i < cellNeighbours.size(); ++i) {
-    result += cellNeighbours[i];
-  }
-  return result;
+int CellularAutomata::mod(int x, int y) {
+  int ret = x % y;
+  if (ret < 0)
+    ret += y;
+  return ret;
 }
 
 int CellularAutomata::updateFunction(const vector<int> &cellNeighbours) {
   int result = 0;
-  int index = mathFunction(cellNeighbours);
-
-  if (index < rulesVector.size()) {
-    result = rulesVector[index];
-    if (result != cellNeighbours[neighbourhoodSize / 2])
+  std::map<vector<int>,int>::iterator it;
+  it = rulesMap.find(cellNeighbours);
+  if(it != rulesMap.end()){
+    result = rulesMap.find(cellNeighbours)->second;
+    if(result == cellNeighbours[neighbourhoodSize/2]){
+      return result;
+    } else{
       changedStates++;
+    }
   } else {
-    result = cellNeighbours[neighbourhoodSize / 2];
+    result = cellNeighbours[neighbourhoodSize/2];
   }
-
   return result;
 }
 
+void CellularAutomata::swapMaps() {
+  currentMap.swap(newMap);
+}
 
 void CellularAutomata::exportCurrentState(string filename) {
   ofstream fout(filename, std::ofstream::out);
@@ -164,25 +191,24 @@ void CellularAutomata::exportCurrentState(string filename) {
 
 }
 
-
 void CellularAutomata::exportRules(string filename) {
   cerr << "Max number of rules = " << pow((double) states, (double) neighbourhoodSize) << endl;
   unsigned long long count = 0;
   ofstream fout(filename, std::ofstream::out);
   fout << neighbourhoodSize << endl;
-  std::vector<int> neighbourhood(neighbourhoodSize, 0);
   int result = 0;
-  do {
-    result = updateFunction(neighbourhood);
-    if (result != neighbourhood[neighbourhoodSize / 2]) {
-      for (int i = 0; i < neighbourhood.size(); i++) {
-        fout << neighbourhood[i] << " ";
+
+  for (auto const& rule : rulesMap)
+  {
+    result = rule.second;
+    if(result != rule.first[neighbourhoodSize/2]){
+      for (int i = 0; i < rule.first.size(); i++) {
+        fout << rule.first[i] << " ";
       }
       fout << result << endl;
       count++;
     }
-
-  } while (next_variation<int>(neighbourhood.begin(), neighbourhood.end(), states, 0));
+  }
 
   cerr << "# of rules = " << count << endl;
   fout.close();

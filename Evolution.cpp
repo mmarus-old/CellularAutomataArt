@@ -42,14 +42,6 @@ void Evolution::evolve() {
   cout << bestEver.fittness << ";";
 }
 
-bool Evolution::isEnd() {
-  if (currentGeneration < maxGenerations) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
 void Evolution::evaluatePopulation() {
   for (int i = 0; i < populationSize; ++i) {
     population[i].calculateFittness();
@@ -66,10 +58,6 @@ void Evolution::evaluatePopulation() {
       bestEver = Chromosome(population[i]);
     }
   }
-}
-
-void Evolution::exportChromosome() {
-  bestEver.exportCA();
 }
 
 Chromosome Evolution::mutate(Chromosome item, int percent) {
@@ -104,20 +92,67 @@ void Evolution::createNewPopulation() {
   }
 }
 
+bool Evolution::isEnd() {
+  if (currentGeneration < maxGenerations) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+
+
+void Evolution::exportChromosome() {
+  bestEver.exportCA();
+}
+
 void Evolution::crossover() {
-  if (Chromosome::urandom(0, 101) < crossoverProbability) {
+  vector<int> key1, key2;
+  std::map<vector<int>,int>::iterator it;
+  int lastIndexOfKeyNotInOldParent1 = -1;
+
+  if (Chromosome::urandom(0, 101) < crossoverProbability){
     Chromosome oldParent1 = parent1;
     Chromosome oldParent2 = parent2;
 
-    int crossoverPoint = Chromosome::urandom(0, parent1.ca.rulesVector.size());
-    for (int i = crossoverPoint; i < parent1.ca.rulesVector.size(); ++i) {
-      parent1.ca.rulesVector[i] = oldParent2.ca.rulesVector[i];
-      parent2.ca.rulesVector[i] = oldParent1.ca.rulesVector[i];
-    }
+    int crossoverCount = Chromosome::urandom(0, parent1.maxRules);
+    for (int i = 0; i < crossoverCount; ++i) {
+      key1 = oldParent1.rulesKeys[i];
+      it = oldParent2.rulesMap.find(key1);
+      if(it != oldParent2.rulesMap.end()){
+        parent1.rulesMap[key1] = oldParent2.rulesMap[key1];
+        parent2.rulesMap[key1] = oldParent1.rulesMap[key1];
+      }
+      else {
+        //key1 not in oldParent2
+        //find key2 which is not present in newParent1 ?
+        for (int j = lastIndexOfKeyNotInOldParent1+1; j < oldParent2.rulesKeys.size(); ++j) {
+          lastIndexOfKeyNotInOldParent1 = -1;
+          key2 = oldParent2.rulesKeys[j];
+          it = oldParent1.rulesMap.find(key2);
+          if(it == oldParent1.rulesMap.end()){
+            lastIndexOfKeyNotInOldParent1 = j;
+            break;
+          }
+        }
+        if(lastIndexOfKeyNotInOldParent1 != -1){
+          parent1.rulesMap.erase(key1);
+          parent1.rulesMap[key2] = oldParent2.rulesMap[key2];
+          parent1.rulesKeys[i] = key2;
 
+          parent2.rulesMap.erase(key2);
+          parent2.rulesMap[key1] = oldParent1.rulesMap[key1];
+          parent2.rulesKeys[lastIndexOfKeyNotInOldParent1] = key1;
+        }
+
+      }
+
+
+    }
     parent1.evaluate = true;
     parent2.evaluate = true;
   }
 }
+
 
 

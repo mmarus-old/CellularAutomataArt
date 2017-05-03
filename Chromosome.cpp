@@ -5,8 +5,6 @@
 #include <iostream>
 #include "Chromosome.h"
 #include <cmath>
-#include <algorithm>
-#include <omp.h>
 
 
 using namespace std;
@@ -15,63 +13,109 @@ Chromosome::Chromosome() {
 }
 
 void Chromosome::initialize() {
-    ca.initializeCA();
+  ca.initializeCA();
 
-    for (int i = 0; i < ca.rulesVector.size(); ++i) {
-        addRandomRule(i);
-    }
+  rulesKeys.resize(maxRules, vector<int>(neighbourhoodSize));
+
+  for (int i =0; i <maxRules; i++)
+    addRandomNonEmptyRule();
+
+  fittness = 0;
 }
 
-unsigned Chromosome::urandom(unsigned low, unsigned high)
-{
-    high = high -1;
-    return rand() % (high - low + 1) + low;
+void Chromosome::addRandomRule() {
+  unsigned long index = rulesMap.size();
+  vector<int> key;
+
+  key = generateRandomKey();
+
+  if (rulesMap.find(key) == rulesMap.end()) {
+    rulesMap[key] = urandom(0, states);
+  }
+
+  if(rulesMap.size() > rulesKeys.size())
+    rulesKeys.resize(rulesMap.size());
+  rulesKeys[index] = key;
+}
+
+void Chromosome::addRandomNonEmptyRule() {
+  unsigned long index = rulesMap.size();
+  vector<int> key;
+  int random = urandom(0, states);
+
+
+  key = generateRandomKey();
+
+  if (rulesMap.find(key) == rulesMap.end()) {
+    while(random==key[neighbourhoodSize/2]){
+      random = urandom(0, states);
+    }
+    rulesMap[key] = random;
+  }
+
+  rulesKeys[index] = key;
+}
+
+vector<int> Chromosome::generateRandomKey() {
+  vector<int> randomKey(neighbourhoodSize);
+
+  for (int j = 0; j < randomKey.size(); ++j) {
+    randomKey[j] = urandom(0, states);
+  }
+  return randomKey;
+}
+
+
+unsigned Chromosome::urandom(unsigned low, unsigned high) {
+  high = high - 1;
+  return rand() % (high - low + 1) + low;
 }
 
 void Chromosome::calculateFittness() {
-    if(!evaluate)
-        return;
+  if (!evaluate)
+    return;
+  fittness = 0;
+
+  ca.rulesMap = rulesMap;
+  ca.setFirstState();
+  ca.runSimulation();
+
+  if (ca.isCrossedOver || ca.isDead()) {
     fittness = 0;
-
-    ca.setFirstState();
-    ca.runSimulation();
-
-    if(ca.isCrossedOver || ca.isDead()){
-        fittness = 0;
-        return;
-    }
-  for (int state = 0; state < STATES; state++) {
-    for (int i = 0; i < ca.heigth; ++i) {
+    return;
+  }
+  for (int i = 0; i < ca.heigth; ++i) {
+    for (int j = 0; j < ca.width; ++j) {
       int usedStates = 0;
-      for (int j = 0; j < ca.width; ++j) {
-        usedStates += ca.mapWithVisitedStates[state][i][j] ;
+      for (int state = 1; state < STATES; state++) {
+//        if(ca.mapWithVisitedStates[state][i][j] ==1)
+//          cout << state <<" "<<i <<" "<< j << " = " <<ca.mapWithVisitedStates[state][i][j]<< endl;
+        usedStates += ca.mapWithVisitedStates[state][i][j];
       }
-      fittness += usedStates*usedStates;
+      fittness += usedStates * usedStates;
     }
   }
-
-//    fittness += ca.stepsWithChangedStates*2;
-//    fittness += ca.changedStates;
-    evaluate = false;
+  evaluate = false;
 }
 
-void Chromosome::exportCA(){
-    ca.exportCurrentState("bicas/caEND.cas");
-    ca.setFirstState();
-    ca.exportCurrentState("bicas/ca.cas");
-    ca.exportRules("bicas/ca.tab");
+void Chromosome::exportCA() {
+  ca.exportCurrentState("bicas/caEND.cas");
+  ca.setFirstState();
+  ca.exportCurrentState("bicas/ca.cas");
+  ca.exportRules("bicas/ca.tab");
 }
 
 int Chromosome::getFittness() {
-    return fittness;
+  return fittness;
 }
 
 void Chromosome::mutateRandomRule() {
-    int indexNumber = urandom(0, ca.rulesVector.size());
-    addRandomRule(indexNumber);
+  int indexNumber = urandom(0, maxRules);
+
+  vector<int> keyToRemove = rulesKeys[indexNumber];
+  rulesMap.erase(keyToRemove);
+
+  addRandomRule();
 }
 
-void Chromosome::addRandomRule(int index) {
-    if(index < ca.rulesVector.size())
-        ca.rulesVector[index] = urandom(0, STATES);
-}
+

@@ -18,17 +18,13 @@ using namespace std;
 class CellularAutomata {
 public:
     CellularAutomata();
-    int mathFunction(const vector<int> &cellNeighbours);
+    map<vector<int>, int> rulesMap;
     int maxValueFromFunction = MAXRULES; // TODO: ZMENIT PRI ZMENE FUNKCIE
     vector<int> rulesVector;
     void initializeCA();
     void setFirstState();
     void exportCurrentState(string filename);
-    int updateFunction();
     int updateFunction(const vector<int> &cellNeighbours);
-    int valueOfcenterOfNeigh;
-    int rowOfCenterOfNeigh;
-    int colOfCenterOfNeigh;
     void develop();
     void runSimulation();
     void exportRules(string filename);
@@ -47,12 +43,13 @@ public:
 
 private:
     vector< vector <int> > newMap;
-    ofstream* fout;
     int neighbourhoodSize = NEIGHBOURHOOD;
     int states = STATES;
     int simulationSteps = SIMULATIONSTEPS;
-    int mathFunction();
 
+    vector<int> getNeighbourhood(int row, int col);
+
+    int mod(int x, int y);
 };
 
 

@@ -19,7 +19,7 @@ public:
     void calculateFittness();
     void exportCA();
     void initialize();
-    void addRandomRule(int index);
+    void addRandomRule();
     static unsigned urandom(unsigned int low, unsigned int high);
     bool evaluate = true;
     unsigned int fittness = 0;
@@ -27,6 +27,16 @@ public:
     int getFittness();
     void mutateRandomRule();
 
+    map<vector<int>,int> rulesMap;
+    vector<vector<int>> rulesKeys;
+    unsigned int maxRules = MAXRULES; //Velkost chromozomu
+    int neighbourhoodSize = NEIGHBOURHOOD; // equal
+    int states = STATES;
+
+    vector<int> generateRandomKey();
+
+
+    void addRandomNonEmptyRule();
 };
 
 
