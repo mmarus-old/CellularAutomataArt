@@ -29,8 +29,6 @@ public:
     int valueOfcenterOfNeigh;
     int rowOfCenterOfNeigh;
     int colOfCenterOfNeigh;
-    vector<int> getNeighbourhood(int row, int col);
-    int mod(int x, int y);
     void develop();
     void runSimulation();
     void exportRules(string filename);
@@ -44,23 +42,15 @@ public:
     bool isDead();
     int changedStates;
     int stepsWithChangedStates;
-    bool crossedOver();
     bool isCrossedOver;
-
-    void recursiveWriting(int index, vector<int> vector);
-
-
-    void exportRules2(string filename);
-
     int totalyNewStatsOfCells;
+
 private:
-    int countOfRulesWritten;
     vector< vector <int> > newMap;
     ofstream* fout;
     int neighbourhoodSize = NEIGHBOURHOOD;
     int states = STATES;
     int simulationSteps = SIMULATIONSTEPS;
-    int usingUpdateRules = false;
     int mathFunction();
 
 };
