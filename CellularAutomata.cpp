@@ -240,7 +240,7 @@ void CellularAutomata::runSimulation() {
 }
 
 void CellularAutomata::exportRules(string filename) {
-    cout << "Max number of rules = " << pow((double) states, (double) neighbourhoodSize) << endl;
+    cerr << "Max number of rules = " << pow((double) states, (double) neighbourhoodSize) << endl;
     unsigned long long count = 0;
     ofstream fout(filename, std::ofstream::out);
     fout << neighbourhoodSize << endl;
@@ -258,13 +258,13 @@ void CellularAutomata::exportRules(string filename) {
 
     }while( next_variation<int>( neighbourhood.begin(), neighbourhood.end(), states, 0) );
 
-    cout << "# of rules = " << count << endl;
+    cerr << "# of rules = " << count << endl;
     fout.close();
 }
 
 void CellularAutomata::exportRules2(string filename) {
     countOfRulesWritten = 0;
-    cout << "Max number of rules = " << pow((double) states, (double) neighbourhoodSize) << endl;
+    cerr << "Max number of rules = " << pow((double) states, (double) neighbourhoodSize) << endl;
     ofstream fileOut(filename, std::ofstream::out);
     fout = &fileOut;
     *fout << neighbourhoodSize << endl;
@@ -273,7 +273,7 @@ void CellularAutomata::exportRules2(string filename) {
     recursiveWriting(0, neighbourhood);
 
 
-    cout << "# of rules = " << countOfRulesWritten << endl;
+    cerr << "# of rules = " << countOfRulesWritten << endl;
 
     (*fout).close();
 }

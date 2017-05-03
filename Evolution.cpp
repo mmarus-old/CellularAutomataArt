@@ -12,8 +12,8 @@ Evolution::Evolution() {
 }
 
 void Evolution::initialize() {
-    cout << "MAX RULES = " << MAXRULES;
-    cout << endl;
+    cerr << "MAX RULES = " << MAXRULES;
+    cerr << endl;
     population.resize(populationSize);
     nextPopulation.resize(populationSize);
 
@@ -37,6 +37,7 @@ void Evolution::evolve() {
         swap(population,nextPopulation);
         currentGeneration++;
     }
+  cout << bestEver.fittness << ";";
 }
 
 bool Evolution::isEnd() {
@@ -54,8 +55,8 @@ void Evolution::evaluatePopulation() {
         if(population[i].getFittness() > 0 && population[i].getFittness() >= bestEver.getFittness()){
             //TODO: MOZNO TREBA SKOPIROVAT NEJAKO
             if(population[i].getFittness() > bestEver.getFittness()){
-                cout << "Generacia #"<< currentGeneration << endl;
-                cout << "Best fittnes = " << bestEver.fittness << endl;
+                cerr << "Generacia #"<< currentGeneration << endl;
+                cerr << "Best fittnes = " << bestEver.fittness << endl;
             }
 
             bestEver = Chromosome(population[i]);
