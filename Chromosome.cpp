@@ -15,63 +15,66 @@ Chromosome::Chromosome() {
 }
 
 void Chromosome::initialize() {
-    ca.initializeCA();
+  ca.initializeCA();
 
-    for (int i = 0; i < ca.rulesVector.size(); ++i) {
-        addRandomRule(i);
-    }
+  for (int i = 0; i < ca.rulesVector.size(); ++i) {
+    addRandomRule(i);
+  }
 }
 
-unsigned Chromosome::urandom(unsigned low, unsigned high)
-{
-    high = high -1;
-    return rand() % (high - low + 1) + low;
+unsigned Chromosome::urandom(unsigned low, unsigned high) {
+  high = high - 1;
+  return rand() % (high - low + 1) + low;
 }
 
 void Chromosome::calculateFittness() {
-    if(!evaluate)
-        return;
+  if (!evaluate)
+    return;
+  fittness = 0;
+
+  ca.setFirstState();
+  ca.runSimulation();
+
+  if (ca.isCrossedOver || ca.isDead()) {
     fittness = 0;
+    return;
+  }
 
-    ca.setFirstState();
-    ca.runSimulation();
-
-    if(ca.isCrossedOver || ca.isDead()){
-        fittness = 0;
-        return;
-    }
-  for (int state = 0; state < STATES; state++) {
-    for (int i = 0; i < ca.heigth; ++i) {
+  for (int i = 0; i < ca.heigth; ++i) {
+    for (int j = 0; j < ca.width; ++j) {
       int usedStates = 0;
-      for (int j = 0; j < ca.width; ++j) {
-        usedStates += ca.mapWithVisitedStates[state][i][j] ;
+      for (int state = 0; state < STATES; state++) {
+        usedStates += ca.mapWithVisitedStates[state][i][j];
       }
-      fittness += usedStates*usedStates;
+      fittness += usedStates * usedStates;
     }
   }
 
 //    fittness += ca.stepsWithChangedStates*2;
 //    fittness += ca.changedStates;
-    evaluate = false;
+  evaluate = false;
 }
 
-void Chromosome::exportCA(){
-    ca.exportCurrentState("bicas/caEND.cas");
-    ca.setFirstState();
-    ca.exportCurrentState("bicas/ca.cas");
-    ca.exportRules("bicas/ca.tab");
+void Chromosome::exportCA() {
+  string dir  = "bicas/";
+  string number = to_string(FILENAME);
+
+  ca.exportCurrentState(dir + number + "caEND.cas");
+  ca.setFirstState();
+  ca.exportCurrentState(dir + number + "ca.cas");
+  ca.exportRules(dir + number + "ca.tab");
 }
 
 int Chromosome::getFittness() {
-    return fittness;
+  return fittness;
 }
 
 void Chromosome::mutateRandomRule() {
-    int indexNumber = urandom(0, ca.rulesVector.size());
-    addRandomRule(indexNumber);
+  int indexNumber = urandom(0, ca.rulesVector.size());
+  addRandomRule(indexNumber);
 }
 
 void Chromosome::addRandomRule(int index) {
-    if(index < ca.rulesVector.size())
-        ca.rulesVector[index] = urandom(0, STATES);
+  if (index < ca.rulesVector.size())
+    ca.rulesVector[index] = urandom(0, STATES);
 }

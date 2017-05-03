@@ -21,23 +21,42 @@ int main() {
 //    c.exportCA();
 //    cout << "fitness " << c.fittness << endl;
 
+  string filename = "bicas/" + to_string(FILENAME) + "info";
+  cout << filename << endl;
+  ofstream fout(filename, std::ofstream::out);
 
-    cout << seed<< ";";
-    cout << STRINGIFYMACRO(MUTATIONPROB) << ";";
-    cout << STRINGIFYMACRO(MUTATEDGENES) << ";";
-    cout << STRINGIFYMACRO(CROSSOVERPROBABILITY) << ";";
-    cout << STRINGIFYMACRO(TOURNAMENTSIZE) << ";";
-    cout << STRINGIFYMACRO(POPSIZE) << ";";
-    cout << STRINGIFYMACRO(MAXGENERATIONS) << ";";
-    cout << STRINGIFYMACRO(STATES) << ";";
-    cout << STRINGIFYMACRO(NEIGHBOURHOOD) << ";";
-    cout << STRINGIFYMACRO(SIMULATIONSTEPS) << ";";
-    cout << STRINGIFYMACRO(SIZEOFCA) << ";";
-    cout << STRINGIFYMACRO(MINRULES) << ";";
-    cout << STRINGIFYMACRO(MAXRULES) << ";";
+  fout << "Seed"<< ",";
+  fout << "MUTATIONPROB" << ",";
+  fout << "MUTATEDGENES" << ",";
+  fout << "CROSSOVERPROBABILITY" << ",";
+  fout << "TOURNAMENTSIZE" << ",";
+  fout << "POPSIZE" << ",";
+  fout << "MAXGENERATIONS" << ",";
+  fout << "STATES" << ",";
+  fout << "NEIGHBOURHOOD" << ",";
+  fout << "SIMULATIONSTEPS" << ",";
+  fout << "SIZEOFCA" << ",";
+  fout << "MINRULES" << ",";
+  fout << "MAXRULES" << ",";
+  fout << endl;
 
+  fout << seed<< ",";
+  fout << STRINGIFYMACRO(MUTATIONPROB) << ",";
+  fout << STRINGIFYMACRO(MUTATEDGENES) << ",";
+  fout << STRINGIFYMACRO(CROSSOVERPROBABILITY) << ",";
+  fout << STRINGIFYMACRO(TOURNAMENTSIZE) << ",";
+  fout << STRINGIFYMACRO(POPSIZE) << ",";
+  fout << STRINGIFYMACRO(MAXGENERATIONS) << ",";
+  fout << STRINGIFYMACRO(STATES) << ",";
+  fout << STRINGIFYMACRO(NEIGHBOURHOOD) << ",";
+  fout << STRINGIFYMACRO(SIMULATIONSTEPS) << ",";
+  fout << STRINGIFYMACRO(SIZEOFCA) << ",";
+  fout << STRINGIFYMACRO(MINRULES) << ",";
+  fout << STRINGIFYMACRO(MAXRULES) << ",";
+  fout << endl;
 
-    cout << endl;
-    return 0;
+  fout.close();
+
+  return 0;
 
 }
