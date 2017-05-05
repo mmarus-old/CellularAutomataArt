@@ -8,7 +8,13 @@
 using namespace std;
 
 Evolution::Evolution() {
-
+  mutationProbability = MUTATIONPROB;
+  mutatedGenes = MUTATEDGENES;
+  crossoverProbability = CROSSOVERPROBABILITY;
+  tournamentSize = TOURNAMENTSIZE; //Min 2
+  populationSize = POPSIZE; //Musi byt parne
+  maxGenerations = MAXGENERATIONS;
+  currentGeneration = 0;
 }
 
 void Evolution::initialize() {
@@ -43,6 +49,8 @@ void Evolution::evolve() {
 }
 
 bool Evolution::isEnd() {
+  if(bestEver.fittness >= MAXFITENSS)
+    return true;
   if (currentGeneration < maxGenerations) {
     return false;
   } else {
@@ -62,14 +70,14 @@ void Evolution::evaluatePopulation() {
         cerr << "Generacia #" << currentGeneration << endl;
         cerr << "Best fittnes = " << bestEver.fittness << endl;
       }
-
+//      exportChromosome(to_string(currentGeneration)+"-"+to_string(i));
       bestEver = Chromosome(population[i]);
     }
   }
 }
 
-void Evolution::exportChromosome() {
-  bestEver.exportCA();
+void Evolution::exportChromosome(string suffix) {
+  bestEver.exportCA(suffix);
 }
 
 Chromosome Evolution::mutate(Chromosome item, int percent) {

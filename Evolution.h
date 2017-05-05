@@ -16,22 +16,22 @@ public:
     void evolve();
     bool isEnd();
     Chromosome mutate(Chromosome item, int percent);
-    void exportChromosome();
+    void exportChromosome(string suffix);
 
-private:
     Chromosome bestEver;
+private:
     vector<Chromosome> population;
     vector<Chromosome> nextPopulation;
     Chromosome parent1;
     Chromosome parent2;
 
-    int mutationProbability = MUTATIONPROB;
-    int mutatedGenes = MUTATEDGENES;
-    int crossoverProbability = CROSSOVERPROBABILITY;
-    int tournamentSize = TOURNAMENTSIZE; //Min 2
-    int populationSize = POPSIZE; //Musi byt parne
-    int maxGenerations = MAXGENERATIONS;
-    int currentGeneration = 0;
+    int mutationProbability;
+    int mutatedGenes;
+    int crossoverProbability;
+    int tournamentSize;
+    int populationSize;
+    int maxGenerations;
+    int currentGeneration;
     void createNewPopulation();
     void crossover();
 

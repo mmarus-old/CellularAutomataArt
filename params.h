@@ -5,19 +5,21 @@
 #ifndef BIN_EVO_PROJEKT_PARAMS_H
 #define BIN_EVO_PROJEKT_PARAMS_H
 
+extern int MUTATIONPROB;
+extern int MUTATEDGENES;
+extern int CROSSOVERPROBABILITY;
+extern int TOURNAMENTSIZE;
+extern int POPSIZE;
+extern int MAXGENERATIONS;
+extern int MAXFITENSS;
+extern int STATES;
+extern int NEIGHBOURHOOD;
+extern int SIMULATIONSTEPS;
+extern int SIZEOFCA;
+extern int MINRULES;
+extern int MAXRULES;
+extern std::string FILENAME;
+
+
 #endif //BIN_EVO_PROJEKT_PARAMS_H
 
-
-#define MUTATIONPROB 100
-#define MUTATEDGENES 4
-#define CROSSOVERPROBABILITY 20
-#define TOURNAMENTSIZE 7
-#define POPSIZE 20
-#define MAXGENERATIONS 500
-#define STATES 8
-#define NEIGHBOURHOOD 9
-#define SIMULATIONSTEPS 25
-#define SIZEOFCA 51
-#define MINRULES 10
-#define MAXRULES 20// = 4 * 9
-#define FILENAME 20

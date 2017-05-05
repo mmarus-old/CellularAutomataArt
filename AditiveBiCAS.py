@@ -47,6 +47,7 @@ color = [ black, cyan, yellow, magenta, pink, brown, orange, blue, violet, red, 
 
 class CA:
     def __init__(self, rows=20, cols=20, states=2, nsize=5):
+        self.filenameOutput = "000"
         self.shelp = 1
         self.age = 0
         self.cell = np.empty((rows+2, cols+2), object)  # object bude str
@@ -303,7 +304,7 @@ def main_loop(ca, win):
                     if devel == 0: # pro zachyceni stavu musi byt CA pozastaven
                         cap_img = "%03d" % capture
                         capture = capture + 1
-                        pygame.image.save(win, cap_img + ".png")
+                        pygame.image.save(win, ca.filenameOutput + ".png")
 # odkomentuj, pokud chces po zapisu stavu automaticky provest jeden dalsi krok
 #                        ca.develop(win)
                 elif keyb == pygame.K_t:   # proved 1 krok, pokud je CA pozast.
@@ -381,6 +382,7 @@ def run_parser(): # analyza argumentu zadanych pri spusteni aplikace
         if sys.argv[i].endswith("tab"): # soubor s pravidly LPF
             print "Nacitam soubor s LPF:", sys.argv[i]
             ca.read_ca(sys.argv[i])
+            ca.filenameOutput = sys.argv[i]
             ltf = True
         elif sys.argv[i].endswith("cas"):    # soubor s pocatecnim stavem
             print "Zadan soubor poc. stavu:", sys.argv[i]

@@ -17,7 +17,7 @@ class Chromosome {
 public:
     Chromosome();
     void calculateFittness();
-    void exportCA();
+    void exportCA(string suffix);
     void initialize();
     void addRandomRule(int index);
     static unsigned urandom(unsigned int low, unsigned int high);

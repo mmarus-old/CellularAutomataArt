@@ -62,6 +62,7 @@ void CellularAutomata::runSimulation() {
 
 void CellularAutomata::develop() {
   for (int i = 1; i < heigth - 1; ++i) {
+#pragma omp sim
     for (int j = 1; j < width - 1; ++j) {
       valueOfcenterOfNeigh = currentMap[i][j];
       rowOfCenterOfNeigh = i;
@@ -166,23 +167,14 @@ void CellularAutomata::exportCurrentState(string filename) {
 
 
 void CellularAutomata::exportRules(string filename) {
-  cerr << "Max number of rules = " << pow((double) states, (double) neighbourhoodSize) << endl;
   unsigned long long count = 0;
   ofstream fout(filename, std::ofstream::out);
+  fout << states << endl;
   fout << neighbourhoodSize << endl;
-  std::vector<int> neighbourhood(neighbourhoodSize, 0);
-  int result = 0;
-  do {
-    result = updateFunction(neighbourhood);
-    if (result != neighbourhood[neighbourhoodSize / 2]) {
-      for (int i = 0; i < neighbourhood.size(); i++) {
-        fout << neighbourhood[i] << " ";
-      }
-      fout << result << endl;
-      count++;
-    }
-
-  } while (next_variation<int>(neighbourhood.begin(), neighbourhood.end(), states, 0));
+  for (int i = 0; i < rulesVector.size(); ++i) {
+    fout << i << " " << rulesVector[i] << endl;
+    count++;
+  }
 
   cerr << "# of rules = " << count << endl;
   fout.close();

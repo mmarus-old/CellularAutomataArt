@@ -55,14 +55,14 @@ void Chromosome::calculateFittness() {
   evaluate = false;
 }
 
-void Chromosome::exportCA() {
+void Chromosome::exportCA(string suffix) {
   string dir  = "bicas/";
-  string number = to_string(FILENAME);
+  string number = FILENAME;
 
-  ca.exportCurrentState(dir + number + "caEND.cas");
+  ca.exportCurrentState(dir + number + "caEND"+suffix+".cas");
   ca.setFirstState();
-  ca.exportCurrentState(dir + number + "ca.cas");
-  ca.exportRules(dir + number + "ca.tab");
+  ca.exportCurrentState(dir + number + "ca"+suffix+".cas");
+  ca.exportRules(dir + number + "ca"+suffix+".tab");
 }
 
 int Chromosome::getFittness() {
