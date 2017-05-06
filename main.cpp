@@ -20,31 +20,33 @@ string FILENAME;
 int MAXFITENSS;
 
 int main(int argc, char* argv[]) {
-  MUTATIONPROB = 80;
-  MUTATEDGENES = 10;
+//argumenty 90 6 80 15 1 stats-rucne 60
+  MUTATIONPROB = 90;
+  MUTATEDGENES = 6;
   CROSSOVERPROBABILITY = 80;
   TOURNAMENTSIZE = 15;
   POPSIZE = 20;
-  MAXGENERATIONS = 100;
+  MAXGENERATIONS = 60;
   STATES = 7;
   NEIGHBOURHOOD = 9;
   SIMULATIONSTEPS = 30;
   SIZEOFCA = 45;
   MINRULES = 10;
   MAXRULES = 15;
-  FILENAME = 40;
-  MAXFITENSS = 99999999;//STATES*STATES*(SIZEOFCA-1)*(SIZEOFCA-1);
-  string FILENAMESTATS = "stats";
+  FILENAME = "1";
+  MAXFITENSS = (STATES*STATES*(SIZEOFCA-1)*(SIZEOFCA-1)) / (STATES*NEIGHBOURHOOD) * MAXRULES;
+  string FILENAMESTATS = "stats-rucne";
 
-  if(argc == 7){
+  if(argc == 8){
     MUTATIONPROB = stoi (argv[1],nullptr,10);
     MUTATEDGENES = stoi (argv[2],nullptr,10);
     CROSSOVERPROBABILITY = stoi (argv[3],nullptr,10);
     TOURNAMENTSIZE = stoi (argv[4],nullptr,10);
     FILENAME = argv[5];
     FILENAMESTATS = argv[6];
+    MAXGENERATIONS = stoi (argv[7],nullptr,10);;
 
-    cout <<"max fit = "<<MAXFITENSS <<" "<< MUTATIONPROB<<" " << MUTATEDGENES<<" " << CROSSOVERPROBABILITY<<" "<<TOURNAMENTSIZE<<" "<<FILENAME<<endl;
+    cout <<MAXGENERATIONS<<" max fit = "<<MAXFITENSS <<" "<< MUTATIONPROB<<" " << MUTATEDGENES<<" " << CROSSOVERPROBABILITY<<" "<<TOURNAMENTSIZE<<" "<<FILENAME<<endl;
   }
 
   time_t seed = time(0);

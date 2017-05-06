@@ -27,20 +27,15 @@ void CellularAutomata::initializeCA() {
 void CellularAutomata::setFirstState() {
   changedStates = 0;
   isCrossedOver = false;
-  for (int i = 0; i < heigth; ++i) {
-    for (int j = 0; j < width; ++j) {
-      currentMap[i][j] = 0;
-    }
-  }
+  std::fill(currentMap.begin(), currentMap.end(), vector<int>(width, 0));
+  std::fill(newMap.begin(), newMap.end(), vector<int>(width, 0));
+  std::fill(mapWithVisitedStates.begin(), mapWithVisitedStates.end(), newMap);
 
   currentMap[heigth / 2][width / 2] = 1;
   currentMap[heigth / 2 - 1][width / 2] = 1;
   currentMap[heigth / 2][width / 2 - 1] = 1;
   currentMap[heigth / 2 + 1][width / 2] = 1;
   currentMap[heigth / 2][width / 2 + 1] = 1;
-
-  std::fill(newMap.begin(), newMap.end(), vector<int>(width, 0));
-  std::fill(mapWithVisitedStates.begin(), mapWithVisitedStates.end(), newMap);
 }
 
 void CellularAutomata::runSimulation() {
