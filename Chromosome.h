@@ -27,6 +27,9 @@ public:
     int getFittness();
     void mutateRandomRule();
 
+    void calculateFittness2();
+
+    void calculateFittness3();
 };
 
 

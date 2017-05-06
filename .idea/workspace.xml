@@ -12,12 +12,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e816119-0ac5-4260-b9fd-8a1864356341" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/BIN_EVO_projekt" afterPath="$PROJECT_DIR$/cmake-build-debug/BIN_EVO_projekt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/CellularAutomata.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/CellularAutomata.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/Chromosome.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/Chromosome.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/Evolution.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/Evolution.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/NumberGenerator.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/NumberGenerator.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/main.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CellularAutomata.cpp" afterPath="$PROJECT_DIR$/CellularAutomata.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Chromosome.cpp" afterPath="$PROJECT_DIR$/Chromosome.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Chromosome.h" afterPath="$PROJECT_DIR$/Chromosome.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/flags.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/flags.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BIN_EVO_projekt.dir/link.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -37,8 +45,8 @@
       <file leaf-file-name="Chromosome.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Chromosome.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="48" column="41" lean-forward="false" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="41" />
+            <state relative-caret-position="1710">
+              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding>
                 <element signature="e#40#59#0" expanded="true" />
               </folding>
@@ -46,21 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Chromosome.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Chromosome.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="36" column="92" lean-forward="false" selection-start-line="36" selection-start-column="92" selection-end-line="36" selection-end-column="92" />
+            <state relative-caret-position="340">
+              <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -71,11 +69,21 @@
       <file leaf-file-name="test.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="35" column="63" lean-forward="false" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="63" />
+            <state relative-caret-position="630">
+              <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="36" />
               <folding>
-                <marker date="1494006436031" expanded="true" signature="1598:1909" ph="..." />
+                <marker date="1494006436031" expanded="true" signature="1785:1909" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,6 +93,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="23722">
               <caret line="1664" column="0" lean-forward="false" selection-start-line="1664" selection-start-column="0" selection-end-line="1664" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -113,8 +131,8 @@
       <file leaf-file-name="CellularAutomata.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CellularAutomata.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="684">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -123,21 +141,11 @@
       <file leaf-file-name="Evolution.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Evolution.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1422">
-              <caret line="79" column="16" lean-forward="false" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+            <state relative-caret-position="219">
+              <caret line="62" column="35" lean-forward="false" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
               <folding>
                 <element signature="e#40#59#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -146,9 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>;</find>
-      <find>&quot;;&quot;</find>
-      <find>fou</find>
       <find>read_stat</find>
       <find>nsize</find>
       <find>ltf_dict</find>
@@ -176,6 +181,9 @@
       <find>save</find>
       <find>#</find>
       <find>$i</find>
+      <find>.*\.h</find>
+      <find>cal</find>
+      <find>calcula</find>
     </findStrings>
     <replaceStrings>
       <replace>//printfZZ</replace>
@@ -229,15 +237,16 @@
         <option value="$PROJECT_DIR$/params.cpp" />
         <option value="$PROJECT_DIR$/stats-mutatedGenes" />
         <option value="$PROJECT_DIR$/stats-tournament.csv" />
-        <option value="$PROJECT_DIR$/Evolution.cpp" />
         <option value="$PROJECT_DIR$/params.h" />
         <option value="$PROJECT_DIR$/AditiveBiCAS.py" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/stats-old" />
-        <option value="$PROJECT_DIR$/test.sh" />
         <option value="$PROJECT_DIR$/stats" />
-        <option value="$PROJECT_DIR$/Chromosome.cpp" />
+        <option value="$PROJECT_DIR$/test.sh" />
+        <option value="$PROJECT_DIR$/Makefile" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/Evolution.cpp" />
         <option value="$PROJECT_DIR$/CellularAutomata.cpp" />
+        <option value="$PROJECT_DIR$/Chromosome.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
@@ -496,7 +505,7 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="BIN" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="90 6 80 15 1 stats-rucne 60" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BIN_EVO_projekt" TARGET_NAME="BIN_EVO_projekt" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BIN_EVO_projekt" RUN_TARGET_NAME="BIN_EVO_projekt">
+    <configuration default="false" name="BIN" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BIN_EVO_projekt" TARGET_NAME="BIN_EVO_projekt" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BIN_EVO_projekt" RUN_TARGET_NAME="BIN_EVO_projekt">
       <envs>
         <env name="OMP_NUM_THREADS" value="8" />
       </envs>
@@ -538,7 +547,7 @@
       <workItem from="1492849421849" duration="1216000" />
       <workItem from="1492866900276" duration="1220000" />
       <workItem from="1493793622799" duration="12656000" />
-      <workItem from="1493818482614" duration="73345000" />
+      <workItem from="1493818482614" duration="85220000" />
     </task>
     <task id="LOCAL-00001" summary="Upraveny vystup">
       <created>1493797821436</created>
@@ -575,11 +584,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493996695760</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="max fit">
+      <created>1494058180341</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1494058180341</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329858000" />
+    <option name="totallyTimeSpent" value="341733000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="749" extended-state="0" />
@@ -616,22 +632,16 @@
     <MESSAGE value="cleaned code" />
     <MESSAGE value="aditivny bicas" />
     <MESSAGE value="parametre" />
-    <option name="LAST_COMMIT_MESSAGE" value="parametre" />
+    <MESSAGE value="max fit" />
+    <option name="LAST_COMMIT_MESSAGE" value="max fit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="93" />
+      <option name="time" value="95" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
     <entry file="file://$PROJECT_DIR$/../arc_proj01/Scripts/run_phi.sh" />
     <entry file="file://$PROJECT_DIR$/../arc_proj01/Scripts/run_phi.pbs" />
@@ -856,29 +866,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Chromosome.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Evolution.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1422">
-          <caret line="79" column="16" lean-forward="false" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
-          <folding>
-            <element signature="e#40#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,26 +900,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="35" column="63" lean-forward="false" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="63" />
+        <state relative-caret-position="630">
+          <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="36" />
           <folding>
-            <marker date="1494006436031" expanded="true" signature="1598:1909" ph="..." />
+            <marker date="1494006436031" expanded="true" signature="1785:1909" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Evolution.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="62" column="35" lean-forward="false" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
+          <folding>
+            <element signature="e#40#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CellularAutomata.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="684">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Chromosome.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="48" column="41" lean-forward="false" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="41" />
+        <state relative-caret-position="1710">
+          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
             <element signature="e#40#59#0" expanded="true" />
           </folding>
@@ -936,8 +954,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="36" column="92" lean-forward="false" selection-start-line="36" selection-start-column="92" selection-end-line="36" selection-end-column="92" />
+        <state relative-caret-position="340">
+          <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

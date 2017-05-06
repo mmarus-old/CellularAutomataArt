@@ -21,6 +21,7 @@ int MAXFITENSS;
 
 int main(int argc, char* argv[]) {
 //argumenty 90 6 80 15 1 stats-rucne 60
+  //90 6 80 15 1 stats-rucne 60
   MUTATIONPROB = 90;
   MUTATEDGENES = 6;
   CROSSOVERPROBABILITY = 80;
@@ -33,8 +34,9 @@ int main(int argc, char* argv[]) {
   SIZEOFCA = 45;
   MINRULES = 10;
   MAXRULES = 15;
-  FILENAME = "1";
+  FILENAME = "3";
   MAXFITENSS = (STATES*STATES*(SIZEOFCA-1)*(SIZEOFCA-1)) / (STATES*NEIGHBOURHOOD) * MAXRULES;
+//  MAXFITENSS = 999999999;
   string FILENAMESTATS = "stats-rucne";
 
   if(argc == 8){

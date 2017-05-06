@@ -55,6 +55,46 @@ void Chromosome::calculateFittness() {
   evaluate = false;
 }
 
+void Chromosome::calculateFittness2() {
+  if(!evaluate)
+    return;
+  fittness = 0;
+
+  ca.setFirstState();
+  ca.runSimulation();
+
+//  if(ca.isCrossedOver || ca.isDead()){
+//    fittness = 0;
+//    return;
+//  }
+
+  for (int i = 1; i < ca.heigth-1; ++i) {
+    for (int j = 1; j < ca.width-1; ++j) {
+      if(ca.currentMap[i][j] != 0)
+        fittness += 1;
+      if(ca.currentMap[i][j] != 0
+         &&ca.currentMap[i][j] == ca.currentMap[i+1][j]
+         && ca.currentMap[i][j]  == ca.currentMap[i+1][j+1]
+         && ca.currentMap[i][j]  == ca.currentMap[i+1][j-1]
+         && ca.currentMap[i][j]  == ca.currentMap[i][j+1]
+         && ca.currentMap[i][j]  == ca.currentMap[i][j-1]
+         && ca.currentMap[i][j]  == ca.currentMap[i-1][j-1]
+         && ca.currentMap[i][j]  == ca.currentMap[i-1][j]
+         && ca.currentMap[i][j]  == ca.currentMap[i-1][j+1]
+          ) {
+        fittness = 0;
+        return;
+      }
+
+    }
+  }
+
+  fittness += ca.stepsWithChangedStates;
+//  fittness += ca.changedStates;
+  evaluate = false;
+}
+
+
 void Chromosome::exportCA(string suffix) {
   string dir  = "bicas/";
   string number = FILENAME;

@@ -36,6 +36,8 @@ void CellularAutomata::setFirstState() {
   currentMap[heigth / 2][width / 2 - 1] = 1;
   currentMap[heigth / 2 + 1][width / 2] = 1;
   currentMap[heigth / 2][width / 2 + 1] = 1;
+
+
 }
 
 void CellularAutomata::runSimulation() {
@@ -57,7 +59,6 @@ void CellularAutomata::runSimulation() {
 
 void CellularAutomata::develop() {
   for (int i = 1; i < heigth - 1; ++i) {
-#pragma omp sim
     for (int j = 1; j < width - 1; ++j) {
       valueOfcenterOfNeigh = currentMap[i][j];
       rowOfCenterOfNeigh = i;
