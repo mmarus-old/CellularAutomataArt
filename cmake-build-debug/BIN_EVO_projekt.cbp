@@ -109,6 +109,9 @@
 		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/main.cpp">
 			<Option target="BIN_EVO_projekt"/>
 		</Unit>
+		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/params.h">
+			<Option target="BIN_EVO_projekt"/>
+		</Unit>
 		<Unit filename="/home/archie/Devel/BIN-EVO-projekt/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

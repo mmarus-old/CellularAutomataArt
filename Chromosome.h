@@ -8,6 +8,8 @@
 #include <map>
 #include <vector>
 #include "CellularAutomata.h"
+#include "params.h"
+
 using namespace std;
 
 class Chromosome {
@@ -15,27 +17,19 @@ class Chromosome {
 public:
     Chromosome();
     void calculateFittness();
-    void exportCA();
-    void initializeRandomRules();
-    vector<int> generateRandomKey();
+    void exportCA(string suffix);
+    void initialize();
     void addRandomRule(int index);
-    void initializeCa();
     static unsigned urandom(unsigned int low, unsigned int high);
-    int ipow(int base, int exp);
-
     bool evaluate = true;
-    map<vector<int>,int> rulesMap;
-    vector<vector<int>> rulesKeys;
     unsigned int fittness = 0;
-    unsigned int maxRules; //Velkost chromozomu
-    int neighbourhoodSize = NEIGHBOURHOOD; // equal
-    int states = STATES;
-
     CellularAutomata ca;
-
     int getFittness();
-
     void mutateRandomRule();
+
+    void calculateFittness2();
+
+    void calculateFittness3();
 };
 
 

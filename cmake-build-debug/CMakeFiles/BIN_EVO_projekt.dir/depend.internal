@@ -5,15 +5,18 @@ CMakeFiles/BIN_EVO_projekt.dir/CellularAutomata.cpp.o
  /home/archie/Devel/BIN-EVO-projekt/CellularAutomata.cpp
  /home/archie/Devel/BIN-EVO-projekt/CellularAutomata.h
  /home/archie/Devel/BIN-EVO-projekt/NumberGenerator.h
+ /home/archie/Devel/BIN-EVO-projekt/params.h
 CMakeFiles/BIN_EVO_projekt.dir/Chromosome.cpp.o
  /home/archie/Devel/BIN-EVO-projekt/CellularAutomata.h
  /home/archie/Devel/BIN-EVO-projekt/Chromosome.cpp
  /home/archie/Devel/BIN-EVO-projekt/Chromosome.h
+ /home/archie/Devel/BIN-EVO-projekt/params.h
 CMakeFiles/BIN_EVO_projekt.dir/Evolution.cpp.o
  /home/archie/Devel/BIN-EVO-projekt/CellularAutomata.h
  /home/archie/Devel/BIN-EVO-projekt/Chromosome.h
  /home/archie/Devel/BIN-EVO-projekt/Evolution.cpp
  /home/archie/Devel/BIN-EVO-projekt/Evolution.h
+ /home/archie/Devel/BIN-EVO-projekt/params.h
 CMakeFiles/BIN_EVO_projekt.dir/NumberGenerator.cpp.o
  /home/archie/Devel/BIN-EVO-projekt/NumberGenerator.cpp
  /home/archie/Devel/BIN-EVO-projekt/NumberGenerator.h
@@ -21,5 +24,5 @@ CMakeFiles/BIN_EVO_projekt.dir/main.cpp.o
  /home/archie/Devel/BIN-EVO-projekt/CellularAutomata.h
  /home/archie/Devel/BIN-EVO-projekt/Chromosome.h
  /home/archie/Devel/BIN-EVO-projekt/Evolution.h
- /home/archie/Devel/BIN-EVO-projekt/NumberGenerator.h
  /home/archie/Devel/BIN-EVO-projekt/main.cpp
+ /home/archie/Devel/BIN-EVO-projekt/params.h

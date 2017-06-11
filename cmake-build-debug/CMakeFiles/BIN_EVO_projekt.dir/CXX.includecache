@@ -21,10 +21,18 @@ NumberGenerator.h
 /home/archie/Devel/BIN-EVO-projekt/NumberGenerator.h
 
 /home/archie/Devel/BIN-EVO-projekt/CellularAutomata.h
-vector
+fstream
+-
+iostream
+-
+cmath
 -
 map
 -
+vector
+-
+params.h
+/home/archie/Devel/BIN-EVO-projekt/params.h
 
 /home/archie/Devel/BIN-EVO-projekt/Chromosome.cpp
 iostream
@@ -32,6 +40,10 @@ iostream
 Chromosome.h
 /home/archie/Devel/BIN-EVO-projekt/Chromosome.h
 cmath
+-
+algorithm
+-
+omp.h
 -
 
 /home/archie/Devel/BIN-EVO-projekt/Chromosome.h
@@ -41,16 +53,18 @@ vector
 -
 CellularAutomata.h
 /home/archie/Devel/BIN-EVO-projekt/CellularAutomata.h
+params.h
+/home/archie/Devel/BIN-EVO-projekt/params.h
 
 /home/archie/Devel/BIN-EVO-projekt/Evolution.cpp
 iostream
 -
 Evolution.h
 /home/archie/Devel/BIN-EVO-projekt/Evolution.h
-Chromosome.h
-/home/archie/Devel/BIN-EVO-projekt/Chromosome.h
 
 /home/archie/Devel/BIN-EVO-projekt/Evolution.h
+params.h
+/home/archie/Devel/BIN-EVO-projekt/params.h
 Chromosome.h
 /home/archie/Devel/BIN-EVO-projekt/Chromosome.h
 
@@ -67,12 +81,10 @@ algorithm
 /home/archie/Devel/BIN-EVO-projekt/main.cpp
 iostream
 -
-CellularAutomata.h
-/home/archie/Devel/BIN-EVO-projekt/CellularAutomata.h
-NumberGenerator.h
-/home/archie/Devel/BIN-EVO-projekt/NumberGenerator.h
-Chromosome.h
-/home/archie/Devel/BIN-EVO-projekt/Chromosome.h
 Evolution.h
 /home/archie/Devel/BIN-EVO-projekt/Evolution.h
+params.h
+/home/archie/Devel/BIN-EVO-projekt/params.h
+
+/home/archie/Devel/BIN-EVO-projekt/params.h
 

@@ -2,51 +2,56 @@
 // Created by archie on 4/17/17.
 //
 
-#import <vector>
+#include <fstream>
+#include <iostream>
+#include <cmath>
 #include <map>
+#include <vector>
+#include "params.h"
 
 #ifndef BIN_EVO_PROJEKT_CELLULARAUTOMATA_H
 #define BIN_EVO_PROJEKT_CELLULARAUTOMATA_H
 
 using namespace std;
-#define STATES 2
-#define NEIGHBOURHOOD 5;
 
 
 class CellularAutomata {
 public:
     CellularAutomata();
+    int mathFunction(const vector<int> &cellNeighbours);
+    int maxValueFromFunction = MAXRULES; // TODO: ZMENIT PRI ZMENE FUNKCIE
+    vector<int> rulesVector;
     void initializeCA();
     void setFirstState();
     void exportCurrentState(string filename);
+    int updateFunction();
     int updateFunction(const vector<int> &cellNeighbours);
-    vector<int> getNeighbourhood(int row, int col);
-    int mod(int x, int y);
+    int valueOfcenterOfNeigh;
+    int rowOfCenterOfNeigh;
+    int colOfCenterOfNeigh;
     void develop();
     void runSimulation();
     void exportRules(string filename);
     void swapMaps();
 
     //MUST BE THE SAME
-    int heigth = 31;
-    int width = 31;
+    int heigth = SIZEOFCA;
+    int width = SIZEOFCA;
     vector< vector <int> > currentMap;
-    map<vector<int>, int> rulesMap;
-
-    void setRulesMap(map<vector<int>, int> rules);
+    vector<vector< vector <int> >> oldStates;
     bool isDead();
     int changedStates;
-    bool crossedOver();
-
-
+    int stepsWithChangedStates;
     bool isCrossedOver;
+    vector<vector< vector <int> >>mapWithVisitedStates;
+
 private:
     vector< vector <int> > newMap;
-
+    ofstream* fout;
     int neighbourhoodSize = NEIGHBOURHOOD;
     int states = STATES;
-    int simulationSteps = 30;
-    int usingUpdateRules = false;
+    int simulationSteps = SIMULATIONSTEPS;
+    int mathFunction();
 
 };
 

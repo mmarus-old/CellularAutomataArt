@@ -43,11 +43,11 @@ brown = pygame.Color(0x825A2C00)
 orange = pygame.Color(0xFA680000)
 violet = pygame.Color(0xAA00FF00)
 
-color = [ black, red, green, yellow, brown, white, orange, cyan, violet,
-          gray, magenta, pink, blue ]
+color = [ black, cyan, yellow, magenta, pink, brown, orange, blue, violet, red, green, white, gray ]
 
 class CA:
     def __init__(self, rows=20, cols=20, states=2, nsize=5):
+        self.filenameOutput = "000"
         self.shelp = 1
         self.age = 0
         self.cell = np.empty((rows+2, cols+2), object)  # object bude str
@@ -129,9 +129,9 @@ class CA:
                 pygame.draw.rect(win, color[self.get_cell(row, col)],
                                 ((col-1)*self.cell_w, (row-1)*self.cell_h,
                                 self.cell_w, self.cell_h), 0)
-                pygame.draw.rect(win, blue,
-                                ((col-1)*self.cell_w, (row-1)*self.cell_h,
-                                self.cell_w, self.cell_h), 1)
+                #pygame.draw.rect(win, blue,
+                #                ((col-1)*self.cell_w, (row-1)*self.cell_h,
+                #                self.cell_w, self.cell_h), 1)
         pygame.display.update()
         # po startu aplikace zobraz napovedu
         if self.shelp == 1:
@@ -156,7 +156,8 @@ class CA:
             cent =self.cell[row][col]
             east =self.cell[row][col+1] if col<self.cols else self.cell[row][1]
             south=self.cell[row+1][col] if row<self.rows else self.cell[1][col]
-            key =  ''.join([ north, west, cent, east, south ])
+            key = int(north) + int(west) + int(cent) + int(east) + int(south)
+            # print key
             self.temp[row][col] = self.ltf_dict.get(key, self.cell[row][col])
 
         elif self.nsize == 9:
@@ -164,13 +165,17 @@ class CA:
             row_cp = row + 1 if row < self.rows else 1
             col_cm = col - 1 if col > 1 else self.cols
             col_cp = col + 1 if col < self.cols else 1
-            key =  ''.join([ self.cell[row_cm][col_cm], self.cell[row_cm][col],
-                             self.cell[row_cm][col_cp], self.cell[row][col_cm],
-                             self.cell[row][col]    , self.cell[row][col_cp],
-                             self.cell[row_cp][col_cm], self.cell[row_cp][col],
-                             self.cell[row_cp][col_cp] ])
+            key =  int(self.cell[row_cm][col_cm])
+            key += int(self.cell[row_cm][col])
+            key += int(self.cell[row_cm][col_cp])
+            key += int(self.cell[row][col_cm])
+            key += int(self.cell[row][col])
+            key += int(self.cell[row][col_cp])
+            key += int(self.cell[row_cp][col_cm])
+            key += int(self.cell[row_cp][col])
+            key += int(self.cell[row_cp][col_cp])
+            # print key
             self.temp[row][col] = self.ltf_dict.get(key, self.cell[row][col])
-
         else:
             print "Nepodporovane okoli:", self.nsize
             exit(1)
@@ -229,16 +234,19 @@ class CA:
                         print "Prilis mnoho stavu CA: %d (maximum je %d)" % \
                             (self.states, len(color))
                         exit(1)
-                elif line[0] != "#": # zakomentovana pravidla se ignoruji
-                    # zde se nacitaji pravidla LTF
-                    right = "%02d" % int(line.pop()) # posl. na radku = next st.
-                    left = ''
-                    self.nsize = len(line)
+                elif row == 1:
+                    if len(line) != 1:  # kdyz hlavicka neodpovida
+                        print "Hlavicka musi obsahovat velkost okolia!"
+                        exit(1)
+                    self.nsize = int(line[0])
                     if self.nsize != 5 and self.nsize != 9:
                         print "Nepodporovane okoli:", self.nsize
                         exit(1)
-                    for i in range(self.nsize):
-                        left = left + "%02d" % int(line[i])
+
+                elif line[0] != "#": # zakomentovana pravidla se ignoruji
+                    # zde se nacitaji pravidla LTF
+                    right = "%02d" % int(line.pop()) # posl. na radku = next st.
+                    left = int(line[0])
                     self.ltf_dict[left] = right
                 row = row + 1
             caf.close()
@@ -280,7 +288,7 @@ class CA:
 
 def main_loop(ca, win):
     countOfSteps = 0
-    maxSteps = 30
+    maxSteps = 60
     devel = 0
     capture = 0
     while True: # obsluha GUI a rizeni vyvoje CA
@@ -296,7 +304,7 @@ def main_loop(ca, win):
                     if devel == 0: # pro zachyceni stavu musi byt CA pozastaven
                         cap_img = "%03d" % capture
                         capture = capture + 1
-                        pygame.image.save(win, cap_img + ".png")
+                        pygame.image.save(win, ca.filenameOutput + ".png")
 # odkomentuj, pokud chces po zapisu stavu automaticky provest jeden dalsi krok
 #                        ca.develop(win)
                 elif keyb == pygame.K_t:   # proved 1 krok, pokud je CA pozast.
@@ -374,6 +382,7 @@ def run_parser(): # analyza argumentu zadanych pri spusteni aplikace
         if sys.argv[i].endswith("tab"): # soubor s pravidly LPF
             print "Nacitam soubor s LPF:", sys.argv[i]
             ca.read_ca(sys.argv[i])
+            ca.filenameOutput = sys.argv[i]
             ltf = True
         elif sys.argv[i].endswith("cas"):    # soubor s pocatecnim stavem
             print "Zadan soubor poc. stavu:", sys.argv[i]
