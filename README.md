@@ -14,7 +14,7 @@ CZ: "dle meho nazoru nejkvalitnejsi vysledek z pohledu umeni v CA"
 EN: "In my opinion, the highest quality result from the CA art"
 
 ### IMHO the best result is:
-![](https://gitlab.com/MMarus/BIN-EVO-projekt/raw/99717adb1d0d607cc8a90a79f4dd0ba345178f2d/4.gif)
+![](https://github.com/MMarus/CellularAutomataArt/blob/master/4.gif)
 
 Other very nice results:
 https://drive.google.com/drive/folders/0Bx7XseSL4vzrOWoyY0sxRmxNZjQ?usp=sharing
